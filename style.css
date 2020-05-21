@@ -10,3 +10,10 @@
     height: 500px;
     border: 1px black solid;
 }
+.point {
+    width: 4px;
+    height: 4px;
+    fill: #000;
+    stroke: #000;
+    stroke-width: 1px;
+}
