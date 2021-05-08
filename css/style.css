@@ -4,12 +4,12 @@
     box-sizing: border-box;
     user-select: none;
 }
-
-#main-canvas {
-    width: 500px;
-    height: 500px;
-    background-color: #eee;
-    margin: 50px;
+.button-list {
+    display: flexbox;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
 }
 .button-list > div {
     width: 50px;
@@ -17,6 +17,17 @@
     display: inline-block;
     background-color: #eee;
 }
+.button-list > div:hover {
+    background-color: #ddd;
+}
+
 .button-list > .selected {
     background-color: #ddd;
+}
+
+#main-canvas {
+    width: 500px;
+    height: 500px;
+    background-color: #eee;
+    margin: 50px;
 }
