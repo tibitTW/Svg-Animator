@@ -1,0 +1,26 @@
+:root {
+    --button-size: 50px;
+    --background-color-default: #eee;
+    --background-color-hovered: #ddd;
+    --background-color-selected: #ddd;
+}
+.button-list {
+    display: flexbox;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.button-list div {
+    display: inline-block;
+    width: var(--button-size);
+    height: var(--button-size);
+
+    background-color: var(--background-color-default);
+}
+.button-list div:hover {
+    background-color: var(--background-color-hovered);
+}
+.button-list .selected {
+    background-color: var(--background-color-selected);
+}

@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <title>Document</title>
         <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/button-list.css" />
     </head>
     <body>
         <div class="button-list">
@@ -13,20 +14,16 @@
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" id="main-canvas" class="main-canvas"></svg>
     </body>
-    <script src="./script/script.js" type="module"></script>
     <script src="./script/toolbar.js"></script>
-    <script>
-        var toolBarButtonList = document.querySelectorAll('.button-list div')
-        var toolValue = 0
+    <script type="module">
+        import { createNode } from './script/svg.js'
 
-        toolBarButtonList.forEach(function (element) {
-            element.addEventListener('click', () => {
-                if (!element.classList.contains('selected')) {
-                    document.querySelector('.button-list .selected').classList.remove('selected')
-                    element.classList.add('selected')
-                    toolValue = +element.id
-                }
-            })
+        var canvas = document.getElementById('main-canvas')
+
+        canvas.addEventListener('click', function (e) {
+            var canvasBoundingRect = canvas.getBoundingClientRect()
+            var node = createNode(e.pageX - canvasBoundingRect.left, e.pageY - canvasBoundingRect.top)
+            canvas.appendChild(node)
         })
     </script>
 </html>
