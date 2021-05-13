@@ -5,22 +5,28 @@
     --background-color-selected: #ddd;
 }
 .button-list {
-    display: flexbox;
-    margin: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 60px);
+    margin: 10px;
     padding: 20px;
     border: 1px solid black;
-    border-radius: 10px;
 }
 .button-list div {
-    display: inline-block;
     width: var(--button-size);
     height: var(--button-size);
-
-    background-color: var(--background-color-default);
+    background: var(--background-color-default);
 }
 .button-list div:hover {
-    background-color: var(--background-color-hovered);
+    background: var(--background-color-hovered);
 }
 .button-list .selected {
-    background-color: var(--background-color-selected);
+    background: var(--background-color-selected);
+}
+.button-list .rect .icon {
+    background: url('../art/icon/rect.png');
+    background-size: 100%;
+}
+.button-list .circle .icon {
+    background: url('../art/icon/circle.png');
+    background-size: 100%;
 }

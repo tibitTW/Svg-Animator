@@ -8,22 +8,71 @@
     </head>
     <body>
         <div class="button-list">
-            <div id="1" class="select selected">select</div>
-            <div id="2" class="rect">rect</div>
-            <div id="3" class="circle">circle</div>
+            <div id="1" class="select selected">
+                <div class="icon">select</div>
+            </div>
+            <div id="2" class="rect">
+                <div class="icon"></div>
+            </div>
+            <div id="3" class="circle">
+                <div class="icon"></div>
+            </div>
+            <div id="4" class="erease">
+                <div class="icon">erease</div>
+            </div>
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" id="main-canvas" class="main-canvas"></svg>
     </body>
     <script src="./script/toolbar.js"></script>
     <script type="module">
-        import { createNode } from './script/svg.js'
+        import { createNode, createRect } from './script/svg.js'
 
-        var canvas = document.getElementById('main-canvas')
+        // main canvas
+        var canvas = document.querySelector('#main-canvas')
 
-        canvas.addEventListener('click', function (e) {
-            var canvasBoundingRect = canvas.getBoundingClientRect()
-            var node = createNode(e.pageX - canvasBoundingRect.left, e.pageY - canvasBoundingRect.top)
-            canvas.appendChild(node)
+        // bounding rect of main canvas
+        var canvasBoundingRect = canvas.getBoundingClientRect()
+
+        // boolean value for checking if rect is being drawed
+        var drawing = false
+
+        var startPoint, endPoint, beginX, beginY, currentRect
+
+        canvas.addEventListener('mousedown', function (e) {
+            drawing = true
+            beginX = e.pageX - canvasBoundingRect.left
+            beginY = e.pageY - canvasBoundingRect.top
+
+            currentRect = createRect(beginX, beginY, 0, 0, '1')
+            startPoint = createNode(beginX, beginY, 'start-point')
+            endPoint = startPoint.cloneNode()
+            endPoint.setAttribute('id', 'end-point')
+            canvas.appendChild(startPoint)
+            canvas.appendChild(endPoint)
+            canvas.appendChild(currentRect)
+        })
+        window.addEventListener('mousemove', function (e) {
+            if (drawing) {
+                var mX = e.pageX - canvasBoundingRect.left
+                var mY = e.pageY - canvasBoundingRect.top
+                endPoint.setAttribute('cx', mX)
+                endPoint.setAttribute('cy', mY)
+                if (mX - beginX < 0) {
+                    currentRect.setAttribute('x', mX)
+                }
+                if (mY - beginY < 0) {
+                    currentRect.setAttribute('y', mY)
+                }
+                currentRect.setAttribute('width', Math.abs(mX - beginX))
+                currentRect.setAttribute('height', Math.abs(mY - beginY))
+            }
+        })
+        canvas.addEventListener('mouseup', function (e) {
+            if (drawing) {
+                canvas.removeChild(startPoint)
+                canvas.removeChild(endPoint)
+            }
+            drawing = false
         })
     </script>
 </html>
