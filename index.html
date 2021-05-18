@@ -8,8 +8,8 @@
     </head>
     <body>
         <div class="button-list">
-            <div id="1" class="select selected">
-                <div class="icon">select</div>
+            <div id="1" class="select">
+                <div class="icon"></div>
             </div>
             <div id="2" class="rect">
                 <div class="icon"></div>
@@ -18,7 +18,7 @@
                 <div class="icon"></div>
             </div>
             <div id="4" class="erease">
-                <div class="icon">erease</div>
+                <div class="icon"></div>
             </div>
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" id="main-canvas" class="main-canvas"></svg>
@@ -30,6 +30,7 @@
         // main canvas
         var canvas = document.querySelector('#main-canvas')
 
+        var drawingMode = 0
         // bounding rect of main canvas
         var canvasBoundingRect = canvas.getBoundingClientRect()
 

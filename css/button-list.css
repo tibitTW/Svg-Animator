@@ -22,11 +22,20 @@
 .button-list .selected {
     background: var(--background-color-selected);
 }
+
+.button-list .select .icon {
+    background: url('../art/icon/select.png');
+    background-size: 100%;
+}
 .button-list .rect .icon {
     background: url('../art/icon/rect.png');
     background-size: 100%;
 }
 .button-list .circle .icon {
     background: url('../art/icon/circle.png');
+    background-size: 100%;
+}
+.button-list .erease .icon {
+    background: url('../art/icon/erease.png');
     background-size: 100%;
 }
